@@ -9,6 +9,11 @@ function App() {
   const [lionsScore, setLionsScore] = useState(0);
   const [tigersScore, setTigersScore] = useState(0);
 
+  let scoreHandler = (teamName, scoreIncrease) => 
+  {
+    teamName === "Lions" ? setLionsScore(lionsScore + scoreIncrease) : setTigersScore(tigersScore + scoreIncrease);
+  }
+
   return (
     <div className="container">
       <section className="scoreboard">
@@ -31,12 +36,12 @@ function App() {
       <section className="buttons">
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
-          <button onClick={_ => setLionsScore(lionsScore + 7)} className="homeButtons__touchdown">Home Touchdown</button>
-          <button onClick={_ => setLionsScore(lionsScore + 3)} className="homeButtons__fieldGoal">Home Field Goal</button>
+          <button onClick={_ => scoreHandler("Lions", 7)} className="homeButtons__touchdown">Home Touchdown</button>
+          <button onClick={_ => scoreHandler("Lions", 3)} className="homeButtons__fieldGoal">Home Field Goal</button>
         </div>
         <div className="awayButtons">
-          <button onClick={_ => setTigersScore(tigersScore + 7)} className="awayButtons__touchdown">Away Touchdown</button>
-          <button onClick={_ => setTigersScore(tigersScore + 3)} className="awayButtons__fieldGoal">Away Field Goal</button>
+          <button onClick={_ => scoreHandler("Tigers", 7)} className="awayButtons__touchdown">Away Touchdown</button>
+          <button onClick={_ => scoreHandler("Tigers", 3)} className="awayButtons__fieldGoal">Away Field Goal</button>
         </div>
       </section>
     </div>
