@@ -33,7 +33,17 @@ function App() {
   useEffect(() =>
   {
       let timer = setInterval(() => {
-        if (timerToggle) setTime(time - 1);
+        if (timerToggle) 
+        {
+          if(time > 0) setTime(time - 1);
+          else
+          {
+            setQuarter(quarter >= 4 ? 1 : quarter + 1)
+            setTime(900);
+            setTimerToggle(false)
+          }
+        }
+        
       }, 1000);
       return function cleanup()
       {
